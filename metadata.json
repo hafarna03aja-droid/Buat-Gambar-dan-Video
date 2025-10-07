@@ -1,0 +1,5 @@
+{
+  "name": "Buat Gambar dan video Produk",
+  "description": "An AI-powered application to create professional ad images by seamlessly merging two or more source images. The core of this application is the AI-driven 'Nano Banana Engine' that handles semantic analysis, background removal, and adaptive blending.",
+  "requestFramePermissions": []
+}
