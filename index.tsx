@@ -1,8 +1,8 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import './src/index.css';
+import App from './App';      // App.tsx ada di root folder
+import './src/index.css';      // CSS ada di folder src
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
