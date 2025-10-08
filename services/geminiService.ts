@@ -27,6 +27,11 @@ if (!ai) {
 
 // =======================================================
 
+// Ekspor instance AI dan model-model yang dibutuhkan
+export const geminiAI = ai;
+export const imageModel = ai ? ai.getGenerativeModel({ model: "gemini-pro-vision" }) : null;
+export const textModel = ai ? ai.getGenerativeModel({ model: "gemini-pro" }) : null;
+
 const fileToGenerativePart = async (file: File) => {
     const base64EncodedDataPromise = new Promise<string>((resolve) => {
         const reader = new FileReader();
