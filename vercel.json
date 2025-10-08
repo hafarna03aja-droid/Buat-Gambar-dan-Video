@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "env": {
+    "VITE_GOOGLE_API_KEY": "@vite_google_api_key"
+  }
+}
