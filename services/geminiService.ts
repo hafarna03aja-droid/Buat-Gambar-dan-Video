@@ -1,11 +1,31 @@
 import { GoogleGenAI, Modality } from "@google/genai"; // Ensure this package is installed with npm or yarn
 import { Composition } from '../types';
 
-if (!import.meta.env.VITE_GOOGLE_API_KEY) {
-    throw new Error("VITE_GOOGLE_API_KEY environment variable is not set");
+// =================== KODE DEBUGGING ===================
+
+// Kita cetak seluruh isi env untuk melihat apa saja yang tersedia
+console.log("Mencoba membaca environment variables...");
+console.log("Isi lengkap dari import.meta.env:", import.meta.env);
+
+// Kita baca variabel spesifik kita
+const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
+
+// Kita cetak nilainya, apakah undefined, kosong, atau ada isinya
+console.log("Nilai VITE_GOOGLE_API_KEY yang terbaca adalah:", API_KEY);
+
+if (!API_KEY) {
+    console.error("ERROR: Variabel VITE_GOOGLE_API_KEY tidak ditemukan atau nilainya kosong!");
+    // throw new Error("API_KEY environment variable not set"); // Error ini kita matikan sementara agar halaman tidak blank
 }
 
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GOOGLE_API_KEY });
+// Kita hanya akan menginisialisasi GoogleGenAI jika API_KEY ada
+const ai = API_KEY ? new GoogleGenAI({ apiKey: API_KEY }) : null;
+
+if (!ai) {
+    console.error("Koneksi ke Google AI tidak dapat dibuat karena API Key bermasalah.");
+}
+
+// =======================================================
 
 const fileToGenerativePart = async (file: File) => {
     const base64EncodedDataPromise = new Promise<string>((resolve) => {
